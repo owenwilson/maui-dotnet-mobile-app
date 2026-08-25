@@ -11,7 +11,7 @@ sudo dnf install -y dotnet-sdk-8.0
 - install maui-android
 
 ```sh
-sudo dotnet workload install maui-android
+sudo ~/.dotnet/dotnet workload install maui-android
 ```
 
 - install [java17](https://github.com/owenwilson/sdk_java_manager)
