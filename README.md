@@ -11,7 +11,7 @@ sudo dnf install -y dotnet-sdk-8.0
 - install maui-android
 
 ```sh
-sudo ~/.dotnet/dotnet workload install maui-android
+dotnet workload install maui-android
 ```
 
 - install [java17](https://github.com/owenwilson/sdk_java_manager)
@@ -20,10 +20,50 @@ sudo ~/.dotnet/dotnet workload install maui-android
 sudo dnf install -y java-17-openjdk-devel
 ```
 
+## setup proyect
+
+- create folder
+
+```sh
+mkdir maui-dotnet-mobile-app && cd maui-dotnet-mobile-app
+```
+
+- create globaljson file with the version .net 8
+
+```sh
+dotnet new globaljson --sdk-version 8.0.424
+```
+
+- install maui template
+
+```sh
+dotnet new install Microsoft.Maui.Templates
+```
+
+- verify maui templat
+
+```sh
+dotnet new --list | grep maui
+.NET MAUI App (Preview)                        maui                        [C#]        MAUI/Android/iOS/macOS/Mac Catalyst/Windows/Tizen
+.NET MAUI Blazor App (Preview)                 maui-blazor                 [C#]        MAUI/Android/iOS/macOS/Mac Catalyst/Windows/Tizen/Blazor
+.NET MAUI Class Library (Preview)              mauilib                     [C#]        MAUI/Android/iOS/macOS/Mac Catalyst/Windows/Tizen
+.NET MAUI ContentPage (C#) (Preview)           maui-page-csharp            [C#]        MAUI/Android/iOS/macOS/Mac Catalyst/WinUI/Tizen/Xaml/Code
+.NET MAUI ContentPage (XAML) (Preview)         maui-page-xaml              [C#]        MAUI/Android/iOS/macOS/Mac Catalyst/WinUI/Tizen/Xaml/Code
+.NET MAUI ContentView (C#) (Preview)           maui-view-csharp            [C#]        MAUI/Android/iOS/macOS/Mac Catalyst/WinUI/Tizen/Xaml/Code
+.NET MAUI ContentView (XAML) (Preview)         maui-view-xaml              [C#]        MAUI/Android/iOS/macOS/Mac Catalyst/WinUI/Tizen/Xaml/Code
+.NET MAUI ResourceDictionary (XAML) (Preview)  maui-dict-xaml              [C#]        MAUI/Android/iOS/macOS/Mac Catalyst/WinUI/Xaml/Code
+```
+
+- create proyect
+
+```sh
+dotnet new maui -n maui-mobile-app
+```
+
 ## uninstall
 
 ```sh
-sudo dotnet workload uninstall maui-android
+dotnet workload uninstall maui-android
 ```
 
 - clean temporal files
