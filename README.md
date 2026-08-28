@@ -60,6 +60,61 @@ dotnet new --list | grep maui
 dotnet new maui -n maui-mobile-app
 ```
 
+## run proyecto android
+
+- check out [android sdk for linux](https://github.com/owenwilson/android-sdk-for-linux)
+- install sdk "platforms;android-34"
+
+```sh
+sdkmanager "platforms;android-34"
+```
+
+- start android emulator
+
+```sh
+android emulator start small_phone
+```
+
+![run android emulator](./images/image-android-emulator.png)
+
+- check devices
+
+```sh
+adb devices
+```
+
+```sh
+List of devices attached
+emulator-5554	device
+```
+
+- run dotnet command for android linux
+
+```sh
+dotnet build -t:Run -f net8.0-android
+```
+
+![run dotnet android app hello world](./images/image-run-app-hello-world.png)
+
+
+- stop andriod emulator
+
+```sh
+android emulator stop small_phone
+```
+
+- compile proyect
+
+```sh
+dotnet build -f net8.0-android
+```
+
+- publish release
+
+```sh
+dotnet publish -f net8.0-android -c Release
+```
+
 ## uninstall
 
 ```sh
