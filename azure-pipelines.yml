@@ -52,6 +52,17 @@ stages:
               Contents: 'maui-dotnet-mobile-app.keystore'
               TargetFolder: maui-mobile-app/
 
+          # debug keystore file
+          - task: Bash@3
+            displayName: 'Debug: Verify keystore location'
+            inputs:
+              targetType: 'inline'
+              script: |
+                cd maui-mobile-app
+                ls -la *.keystore || echo "The keystore was not found in the current folder"
+                echo "Folder contents:"
+                ls -la
+
           # build maui mobile app
           - task: Bash@3
             displayName: 'Task: Build android maui app'
