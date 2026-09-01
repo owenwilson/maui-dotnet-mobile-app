@@ -28,13 +28,14 @@ stages:
               version: '8.0.424'
 
           # install workloads dependencies
+          # vm image mac os need dependencies -> maccatalyst, ios 
           - task: Bash@3
             displayName: 'Task: Install MAUI workloads Android: dotnet workload install android'
             inputs:
               targetType: 'inline'
               script: |
                 dotnet nuget locals all --clear
-                dotnet workload install android maui-android maccatalyst --source https://aka.ms/dotnet8/nuget/index.json --source https://api.nuget.org/v3/index.json
+                dotnet workload install android maui-android --source https://aka.ms/dotnet8/nuget/index.json --source https://api.nuget.org/v3/index.json
 
           # download keystore file
           - task: DownloadSecureFile@1
