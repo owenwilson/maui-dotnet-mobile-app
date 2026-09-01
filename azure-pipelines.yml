@@ -8,7 +8,7 @@ pool:
   vmImage: 'macos-latest'
 
 variables:
-  - group: groupSecret
+  - group: groupSecretMobileApp
   # buildConfiguration: 'Release'
   # outputDirectory: '$(build.binariesDirectory)/$(buildConfiguration)'
 
