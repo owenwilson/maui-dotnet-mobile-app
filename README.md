@@ -139,7 +139,7 @@ dotnet workload list
 dotnet workload install android
 ```
 
-- install optional
+- install optional (use these dependencies when you need IOS)
 
 ```sh
 dotnet workload install maccatalyst
