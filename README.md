@@ -96,8 +96,7 @@ dotnet build -t:Run -f net8.0-android
 
 ![run dotnet android app hello world](./images/image-run-app-hello-world.png)
 
-
-- stop andriod emulator
+- stop android emulator
 
 ```sh
 android emulator stop small_phone
@@ -113,6 +112,56 @@ dotnet build -f net8.0-android
 
 ```sh
 dotnet publish -f net8.0-android -c Release
+```
+
+## publish and generate apk
+
+- example signing - generating a keystore file
+- example pass: Sample@!2
+
+```sh
+keytool -genkeypair -v -keystore maui-dotnet-mobile-app.keystore -alias maui-dotnet-mobile-app -keyalg RSA -keysize 2048 -validity 100000
+```
+
+- verify your keystore password
+
+```sh
+keytool -list -keystore maui-dotnet-mobile-app.keystore
+```
+
+- install additional workloads
+
+```sh
+dotnet workload list
+```
+
+```sh
+dotnet workload install android
+```
+
+- install optional
+
+```sh
+dotnet workload install maccatalyst
+dotnet workload install ios
+dotnet workload install maui
+```
+
+- run android emulator
+
+```sh
+android emulator start small_phone
+```
+
+- download the apk from the azure devops artifacts
+- drag and drop the downloaded apk file into the android emulator
+
+![drag and drop apk file](./images/image-drag-and-drop-apk-file.png)
+
+- stop android emulator
+
+```sh
+android emulator stop small_phone
 ```
 
 ## uninstall
@@ -133,3 +182,4 @@ dotnet workload clean
 - check out [install dotnet sdk manager for linux](https://github.com/owenwilson/dotnet-sdk-manager)
 - check out [install android sdk](https://github.com/owenwilson/android-sdk-for-linux)
 - check out [install sdk java manager for linxu](https://github.com/owenwilson/sdk_java_manager)
+- check out [dotnet maui deployment app](https://learn.microsoft.com/en-us/dotnet/maui/deployment/?view=net-maui-9.0)
