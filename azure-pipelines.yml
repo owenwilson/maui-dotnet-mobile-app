@@ -27,6 +27,16 @@ stages:
               packageType: 'sdk'
               version: '8.0.424'
 
+          # sonarcloud service
+          - task: SonarCloudPrepare@4
+            displayName: 'Prepare analysis configuration on sonarcloud'
+            inputs:
+              SonarCloud: 'az-sonarcloud'
+              organization: '$(sonarOrganization)'
+              scannerMode: 'dotnet'
+              projectName: '$(sonarProjectName)'
+              projectKey: '$(sonarProjectKey)'
+
           # install workloads dependencies
           # vm image mac os need dependencies -> maccatalyst, ios 
           - task: Bash@3
@@ -83,3 +93,15 @@ stages:
             inputs:
               PathtoPublish: '$(Build.ArtifactStagingDirectory)/Android'
               ArtifactName: 'Android'
+
+          # sonarcloud run analysis
+          - task: SonarCloudAnalyze@4
+            displayName: 'Run code analysis on sonarcloud'
+            inputs:
+              jdkversion: 'JAVA_HOME_17_X64'
+            
+          # sonarcloud publish
+          - task: SonarCloudPublish@4
+            displayName: 'Publish quality gate result on sonarcloud'
+            inputs:
+              pollingTimeoutSec: '300'
